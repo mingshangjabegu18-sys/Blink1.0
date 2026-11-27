@@ -26,7 +26,6 @@ Blinking through sunset
 
 - 🎓 Studying **App & Web Production (アプリ・Web制作学科)** at **Waseda Bunri Special Training College** (Graduating March 2028 / **28卒**).
 - 🌇 Theme philosophy: Embracing the **orange, purple, and midnight tones** of natural sunsets while prioritizing micro-interactions that make the web feel "human" and animated.
-- 💬 Currently watching for new trends with **[TrendHub](https://github.com/mingshangjabegu18-sys)** and improving layout easing curves.
 
 ---
 
