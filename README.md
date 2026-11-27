@@ -19,8 +19,8 @@ Blinking through sunset
   </p>
 </div>
 
-<!-- Dusk Horizon Divider -->
-<img src="https://capsule-render.vercel.app/api?type=slice&color=gradient&customColorList=0:f97316,50:c084fc,100:030712&height=20" width="100%" />
+<img src="./sunset-blink.svg" width="100%" alt="Tap to open interactive sunset eye" />
+
 
 ### 👁️ Blink & Sunset (日没のテーマ)
 
