@@ -19,7 +19,7 @@ Blinking through sunset
   </p>
 </div>
 
-<img src="./sunset-blink.svg" width="100%" alt="Tap to open interactive sunset eye" />
+<img src="./Blink1.1.svg" width="100%" alt="Tap to open interactive sunset eye" />
 
 
 ### 👁️ Blink & Sunset (日没のテーマ)
