@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Blinking Through Sunset | Mingshang Jabegu</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #0f172a 0%, #4c1d95 48%, #ea580c 85%, #f97316 100%);
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow: hidden;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Sun Glow behind the Eye */
+    .sun-container {
+      position: relative;
+      width: 260px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sun-glow {
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fef08a 0%, #f97316 55%, transparent 72%);
+      opacity: 0.75;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* Eye Frame & Blinking Animation */
+    .eye {
+      position: relative;
+      width: 210px;
+      height: 115px;
+      background: #fff7ed;
+      border-radius: 50%;
+      border: 3px solid #fdba74;
+      overflow: hidden;
+      box-shadow: 0 0 35px rgba(249, 115, 22, 0.6);
+      animation: blink 4.5s infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%, 44%, 54%, 100% { transform: scaleY(1); }
+      49% { transform: scaleY(0.04); }
+    }
+
+    /* Iris & Pupil controlled by Phone Tilt */
+    .iris {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 68px;
+      height: 68px;
+      margin: -34px 0 0 -34px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #7c2d12 35%, #ea580c 85%);
+      transition: transform 0.08s ease-out;
+    }
+
+    .pupil {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 28px;
+      height: 28px;
+      margin: -14px 0 0 -14px;
+      border-radius: 50%;
+      background: #090d16;
+    }
+
+    .catchlight {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .subtitle {
+      margin-top: 26px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #fed7aa;
+      letter-spacing: 1.5px;
+    }
+
+    /* iOS Gyroscope Unlock Button */
+    #motion-btn {
+      margin-top: 24px;
+      padding: 12px 22px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1.5px solid #fdba74;
+      border-radius: 999px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body>
+  <h1>MINGSHANG JABEGU</h1>
+
+  <div class="sun-container">
+    <div class="sun-glow" id="sun"></div>
+    <div class="eye">
+      <div class="iris" id="iris">
+        <div class="pupil"></div>
+        <div class="catchlight"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="subtitle">BLINKING THROUGH SUNSET • TOKYO</p>
+  <button id="motion-btn">Enable Phone Tilt Tracking</button>
+
+  <script>
+    const iris = document.getElementById('iris');
+    const sun = document.getElementById('sun');
+    const btn = document.getElementById('motion-btn');
+
+    function handleOrientation(event) {
+      // gamma: left-to-right tilt (-90 to 90), beta: front-to-back tilt (-180 to 180)
+      const gamma = event.gamma || 0;
+      const beta = (event.beta || 45) - 45; // neutral holding angle ~45 deg
+
+      // Clamp eye movement so the iris stays inside the sclera
+      const moveX = Math.max(-42, Math.min(42, gamma * 1.1));
+      const moveY = Math.max(-22, Math.min(22, beta * 0.7));
+
+      iris.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      sun.style.transform = `translate(${-moveX * 0.4}px, ${-moveY * 0.4}px)`;
+    }
+
+    // iOS 13+ requires explicit permission on tap
+    btn.addEventListener('click', async () => {
+      if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        try {
+          const response = await DeviceOrientationEvent.requestPermission();
+          if (response === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation);
+            btn.style.display = 'none';
+          }
+        } catch (err) {
+          btn.textContent = 'Motion Permission Denied';
+        }
+      } else {
+        // Desktop / Android fallback
+        window.addEventListener('deviceorientation', handleOrientation);
+        btn.style.display = 'none';
+      }
+    });
+
+    // Mouse / Touch drag fallback so it also works on PC
+    window.addEventListener('pointermove', (e) => {
+      const x = ((e.clientX / window.innerWidth) - 0.5) * 70;
+      const y = ((e.clientY / window.innerHeight) - 0.5) * 35;
+      iris.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
+</body>
+</html>
 
