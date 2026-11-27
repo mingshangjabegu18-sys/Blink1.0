@@ -1,26 +1,17 @@
 # Blink1.0
 Blinking through sunset
-<!-- Beautiful animated Header -->
 <div align="center">
-  <!-- Interactive Header with blink element & vibrant dusk gradient -->
-  <p align="center">
-    <a href="https://github.com/mingshangjabegu18-sys">
-      <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=15:0f172a,40:4c1d95,70:ea580c,100:f97316&height=180&section=header&text=🌅%20Mingshang%20Jabegu&fontSize=42&fontColor=ffffff&fontAlignY=45&animation=fadeIn" width="100%" alt="Sunset Header" />
-    </a>
-  </p>
-
-  <!-- Blink & Typing SVG Interface with animated typing cursor mimicking looking and blinking -->
-  <a href="https://github.com/mingshangjabegu18-sys">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=25&duration=4000&pause=1000&color=F97316&center=true&vCenter=true&multiline=true&repeat=true&width=700&height=100&lines=Welcome+to+my+digital+sunset...%20👁️_👁️%20✨;Exploring+App+%26+Web+Production;Creating+living%20animations%20%7C%2028卒%20Tokyo" alt="Typing Animation" />
+  <a href="https://mingshangjabegu18-sys.github.io/Blink1.0/">
+    <img src="./sunset-blink.svg" width="100%" alt="Tap to open interactive sunset eye" />
   </a>
 
-  <!-- Animated Blink Avatar & Status -->
   <p>
-    <a href="https://mingshangjabegu18-sys.github.io/portfolio/">
-      <img src="https://img.shields.io/badge/👁️_👁️%20WATCHING%20THE%20SUNSET-f97316?style=for-the-badge&logoColor=white" alt="Watching Sunset" />
+    <a href="https://mingshangjabegu18-sys.github.io/Blink1.0/">
+      <img src="https://img.shields.io/badge/TAP_TO_TILT_SUNSET-f97316?style=for-the-badge&logo=githubpages&logoColor=white" alt="Interactive Sunset" />
     </a>
-    <img src="https://komarev.com/ghpvc/?username=mingshangjabegu18-sys&label=SUNSET+VISITORS+🌅&color=ea580c&style=for-the-badge" alt="Profile Views" />
+    <img src="https://komarev.com/ghpvc/?username=mingshangjabegu18-sys&label=SUNSET+VISITORS&color=ea580c&style=for-the-badge" alt="Profile Views" />
   </p>
+</div>
 
   <p>
     <strong>アプリ・Web制作学科 (App & Web Production) @ 早稲田文理専門学校</strong><br>
